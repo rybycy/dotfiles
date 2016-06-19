@@ -40,18 +40,29 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" http://vimawesome.com/
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'L9'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'cesardeazevedo/Fx-ColorScheme'
-Plugin 'klen/python-mode'
-Plugin 'scrooloose/syntastic'
+Plugin 'L9' 
 
-" Comment\uncomment
-Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-surround' " parenthesizing
+" Plugin 'git://git.wincent.com/command-t.git' " smart file finding 
+Plugin 'altercation/vim-colors-solarized' " colours, yeah
+Plugin 'scrooloose/syntastic' " syntax checking
+Plugin 'scrooloose/nerdcommenter' " commenting
+Plugin 'scrooloose/nerdtree' " file tree
+Plugin 'ervandew/supertab' "insert mode completions with tab
+Plugin 'mileszs/ack.vim' "plugin for ack
+Plugin 'honza/vim-snippets' "snippets
+
+Plugin 'tpope/vim-fugitive' " git wrapper
+Plugin 'airblade/vim-gitgutter' " git diff in sidebar
+
+Plugin 'klen/python-mode'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'othree/html5.vim'
+Plugin 'elzr/vim-json'
 
 call vundle#end()            " required
 

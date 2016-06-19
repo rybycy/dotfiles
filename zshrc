@@ -1,4 +1,4 @@
-export ZSH=/home/rybycy/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -6,12 +6,27 @@ export ZSH=/home/rybycy/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="agnoster"
 
-plugins=(git brew colorize cp github npm osx python scala vagrant)
-
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# matches case insensitive for lowercase
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# pasting with tabs doesn't perform completion
+zstyle ':completion:*' insert-tab pending
+
+if [[ -n $SSH_CONNECTION ]]; then
+  export PS1='%m:%3~$(git_info_for_prompt)%# '
+else
+  export PS1='%3~$(git_info_for_prompt)%# '
+fi
+
+source $ZSH/oh-my-zsh.sh
+
+### Plugins
+plugins=(git brew colorize cp github npm osx python scala vagrant zsh-syntax-highlighting)
 
 ### Aliases
 alias pls='sudo'
@@ -31,7 +46,7 @@ _up() {
     local d=${PWD//\//\ }
     COMPREPLY=( $( compgen -W "$d" -- "$cur" ) )
 }
-complete -F _up up
+#complete -F _up up
 
 #jump below
 jd(){
@@ -56,4 +71,4 @@ function incl {
 incl "macosx"
 incl "bit"
 incl "vostro"
-source $ZSH/oh-my-zsh.sh
+
