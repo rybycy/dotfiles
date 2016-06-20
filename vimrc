@@ -27,7 +27,7 @@ set backspace=indent,eol,start
 set gdefault
 set hidden
 set history=1000
-
+set diffopt+=vertical " we want more likely to split vertically, e.g. when diffing
 let g:syntastic_javascript_checkers = ['jscs'] " set default javascript checker
 
 " Centralize backups, swapfiles and undo history
