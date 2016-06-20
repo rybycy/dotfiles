@@ -152,6 +152,11 @@ set background=dark
 colorscheme solarized
 
 " Quick guide
-" <leader> hp, hs, hu - chunk preview, stage, undo
-" <leader> c <space> - toggle comment
+" Most interesting vim features
+"	g~, U, u - toggle case of characters
+"	ddkP - switch current line with previous
+"
+" Best features included in plugins
+"	<leader> hp, hs, hu - chunk preview, stage, undo - git
+"	<leader> c <space> - toggle comment
 "
