@@ -4,11 +4,6 @@
 [core]
 	editor = /usr/bin/vim
 	excludesfile = /Users/robaszynskim/.gitignore_global
-
-	# Use custom `.gitignore` and `.gitattributes`
-	excludesfile = ~/.gitignore
-	attributesfile = ~/.gitattributes
-
 	# Treat spaces before tabs and all kinds of trailing whitespace as an error
 	# [default] trailing-space: looks for spaces at the end of a line
 	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
@@ -18,17 +13,28 @@
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
 	trustctime = false
 
-	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
-	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
-	precomposeunicode = false
-
-
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
 [push]
 	default = matching
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow bold
+	local = green bold
+	remote = cyan bold
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "status"]
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
 [alias]
 	coam = commit --amend
 	coamnoe = commit --amend --no-edit
@@ -36,7 +42,7 @@
 	logg = log --oneline --graph --decorate
 	pushom = push origin master
 	pullom = pull origin master
-	cb = checkout -b
+	cb = checkout -b 
 	stat = status -s -b
 	st = status -uno
 	diffname = diff --name-only
@@ -176,3 +182,4 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+	pr = pull --rebase

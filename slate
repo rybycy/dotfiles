@@ -1,10 +1,10 @@
 # See https://github.com/jigish/slate#configuring-slate
-
+ 
 ### Aliases
-
+ 
 ## Key aliases
 alias hyper ctrl;shift;alt;cmd
-
+ 
 ## Application aliases
 alias firefox   'Firefox'
 alias firefoxdev 'FirefoxDeveloperEdition'
@@ -25,17 +25,17 @@ alias topleft      corner top-left                                 resize:screen
 alias topright     corner top-right                                resize:screenSizeX/2;screenSizeY/2
 alias bottomleft   corner bottom-left                              resize:screenSizeX/2;screenSizeY/2
 alias bottomright  corner bottom-right                             resize:screenSizeX/2;screenSizeY/2
-
-
+ 
+ 
 ### Bindings
-bind `:${hyper} switch
+bind `:${hyper} switch 
 ## Focus Bindings
 # These should be familiar to Vim users
 bind 1:${hyper}  focus up
 bind 2:${hyper}  focus down
 bind 3:${hyper}  focus left
 bind 4:${hyper}  focus right
-
+ 
 ## Location bindings
 # These are laid out to be used with the right hand
 # and to complement the focus bindings
@@ -47,7 +47,7 @@ bind o:${hyper}  ${topleft}
 bind p:${hyper}  ${topright}
 bind l:${hyper}  ${bottomleft}
 bind ;:${hyper}  ${bottomright}
-
+ 
 ## App bindings
 # These are laid out on the left hand
 bind space:${hyper}  focus ${editor}

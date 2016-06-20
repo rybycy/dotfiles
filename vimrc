@@ -1,4 +1,5 @@
 syntax on
+let mapleader='`'
 
 set nocompatible              " be iMproved, required
 set laststatus=2
@@ -27,6 +28,8 @@ set gdefault
 set hidden
 set history=1000
 
+let g:syntastic_javascript_checkers = ['jscs'] " set default javascript checker
+
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
@@ -34,6 +37,7 @@ set directory=~/.vim/swaps
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 
+au VimEnter *  NERDTree " Open NERDTree by default
 
 filetype off                  " required
 
@@ -45,7 +49,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'L9' 
 
 Plugin 'tpope/vim-surround' " parenthesizing
-" Plugin 'git://git.wincent.com/command-t.git' " smart file finding 
+Plugin 'git://git.wincent.com/command-t.git' " smart file finding 
 Plugin 'altercation/vim-colors-solarized' " colours, yeah
 Plugin 'scrooloose/syntastic' " syntax checking
 Plugin 'scrooloose/nerdcommenter' " commenting
@@ -69,6 +73,18 @@ call vundle#end()            " required
 filetype plugin indent on
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+
+function! JscsFix()
+    "Save current cursor position"
+    let l:winview = winsaveview()
+    "Pipe the current buffer (%) through the jscs -x command"
+    % ! jscs -x
+    "Restore cursor position - this is needed as piping the file"
+    "through jscs jumps the cursor to the top"
+    call winrestview(l:winview)
+endfunction
+command! JscsFix :call JscsFix()
+
 
 function! DoPrettyXML()
   " save the filetype so we can restore it later
@@ -135,3 +151,7 @@ let g:syntastic_check_on_wq = 0
 set background=dark
 colorscheme solarized
 
+" Quick guide
+" <leader> hp, hs, hu - chunk preview, stage, undo
+" <leader> c <space> - toggle comment
+"
