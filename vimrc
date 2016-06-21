@@ -1,5 +1,5 @@
 syntax on
-let mapleader='`'
+let mapleader=','
 
 set nocompatible              " be iMproved, required
 set laststatus=2
@@ -37,7 +37,11 @@ set directory=~/.vim/swaps
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 
-au VimEnter *  NERDTree " Open NERDTree by default
+" this is not a good idea to open NTree by default
+" because it opens even it's completely not needed - it's better to have
+" toggle shortcut
+" au VimEnter *  NERDTree " Open NERDTree by default
+map <C-n> :NERDTreeToggle<CR> " CTRL + N opens nerdtree
 
 filetype off                  " required
 
