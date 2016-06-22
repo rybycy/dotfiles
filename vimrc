@@ -20,6 +20,7 @@ set softtabstop=8
 set wildmenu
 set wildmode=list:longest
 
+nmap <leader>ne :NERDTree<cr>
 " Allow backspace in insert mode
 set backspace=indent,eol,start
 
