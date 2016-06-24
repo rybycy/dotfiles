@@ -19,17 +19,11 @@ set shiftwidth=8
 set softtabstop=8
 set wildmenu
 set wildmode=list:longest
-
-nmap <leader>ne :NERDTree<cr>
-" Allow backspace in insert mode
-set backspace=indent,eol,start
-
-" Add the g flag to search/replace by default
-set gdefault
+set gdefault " Add the g flag to search/replace by default
 set hidden
 set history=1000
 set diffopt+=vertical " we want more likely to split vertically, e.g. when diffing
-let g:syntastic_javascript_checkers = ['jscs'] " set default javascript checker
+set backspace=indent,eol,start " Allow backspace in insert mode
 
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
@@ -38,11 +32,12 @@ set directory=~/.vim/swaps
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 
-" this is not a good idea to open NTree by default
-" because it opens even it's completely not needed - it's better to have
-" toggle shortcut
-" au VimEnter *  NERDTree " Open NERDTree by default
+map <leader>ne :NERDTree<cr>
 map <C-n> :NERDTreeToggle<CR> " CTRL + N opens nerdtree
+
+let g:syntastic_javascript_checkers = ['jscs'] " set default javascript checker
+let g:ctrlp_working_path_mode = 'c'  " don't go up
+
 
 filetype off                  " required
 
@@ -54,7 +49,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'L9' 
 
 Plugin 'tpope/vim-surround' " parenthesizing
-Plugin 'git://git.wincent.com/command-t.git' " smart file finding 
+Plugin 'kien/ctrlp.vim' " smart file finding
 Plugin 'altercation/vim-colors-solarized' " colours, yeah
 Plugin 'scrooloose/syntastic' " syntax checking
 Plugin 'scrooloose/nerdcommenter' " commenting
@@ -66,12 +61,14 @@ Plugin 'honza/vim-snippets' "snippets
 Plugin 'tpope/vim-fugitive' " git wrapper
 Plugin 'airblade/vim-gitgutter' " git diff in sidebar
 
+Plugin 'lepture/vim-jinja'
 Plugin 'klen/python-mode'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'othree/html5.vim'
 Plugin 'elzr/vim-json'
+
 
 call vundle#end()            " required
 
@@ -147,6 +144,8 @@ let g:syntastic_javascript_checkers = ['jscs']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunj set filetype=jinja " use ninja highlighting on e.g. nunj templates
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
