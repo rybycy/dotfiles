@@ -6,9 +6,6 @@ export ZSH=~/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="agnoster"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
 # matches case insensitive for lowercase
@@ -28,27 +25,10 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 ### Plugins
-plugins=(git brew colorize cp github npm osx python scala vagrant zsh-syntax-highlighting)
+plugins=(git brew colorize cp github npm osx python scala vagrant zsh-syntax-highlighting alias-tips wd git-it-on zsh-maven-plugin)
 
 ### Aliases
 alias pls='sudo'
-
-### Custom functions 
-# UP TO FOLDER
-up() {
-    if [ -z "$1" ]; then
-        return
-    fi
-    local up=$1
-    cd "${PWD/\/$up\/*//$up}"
-}
-
-_up() {
-    local cur=${COMP_WORDS[COMP_CWORD]}
-    local d=${PWD//\//\ }
-    COMPREPLY=( $( compgen -W "$d" -- "$cur" ) )
-}
-#complete -F _up up
 
 #jump below
 jd(){
@@ -74,3 +54,5 @@ incl "macosx"
 incl "bit"
 incl "vostro"
 
+# zsh-bd
+. $HOME/.zsh/plugins/bd/bd.zsh
