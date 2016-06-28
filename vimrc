@@ -117,6 +117,11 @@ function! DoPrettyXML()
 endfunction
 command! PrettyXML call DoPrettyXML()
 
+function Glastmsg()
+	read !git lastmsg
+endfunction
+command! Glast call Glastmsg()
+
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
 	let save_cursor = getpos(".")
