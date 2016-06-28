@@ -25,7 +25,7 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 ### Plugins
-plugins=(git brew colorize cp github npm osx python scala vagrant zsh-syntax-highlighting alias-tips wd git-it-on zsh-maven-plugin)
+plugins=(git brew colorize cp github npm osx python scala vagrant alias-tips wd git-it-on zsh-maven-plugin zsh-syntax-highlighting)
 
 ### Aliases
 alias pls='sudo'
@@ -56,3 +56,5 @@ incl "vostro"
 
 # zsh-bd
 . $HOME/.zsh/plugins/bd/bd.zsh
+
+source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
