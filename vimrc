@@ -24,6 +24,7 @@ set hidden
 set history=1000
 set diffopt+=vertical " we want more likely to split vertically, e.g. when diffing
 set backspace=indent,eol,start " Allow backspace in insert mode
+set autoread " autoread modified files
 
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
