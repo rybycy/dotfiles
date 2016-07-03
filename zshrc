@@ -14,8 +14,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # pasting with tabs doesn't perform completion
 zstyle ':completion:*' insert-tab pending
 
-alias python=python3
-
 if [[ -n $SSH_CONNECTION ]]; then
   export PS1='%m:%3~$(git_info_for_prompt)%# '
 else
@@ -48,6 +46,14 @@ function incl {
 	then
 		source $FILE
 	fi
+}
+
+function optimize_pdf {
+	if [ -z "$1" ] && [ -z "$2" ]; then
+		echo "Usage: optimize_pdf input_file output_file"
+		return 1;
+	fi
+	sudo gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -sOutputFile=$2 "$1"
 }
 
 incl "macosx"
