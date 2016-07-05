@@ -75,6 +75,8 @@ Plugin 'mxw/vim-jsx'
 Plugin 'othree/html5.vim'
 Plugin 'elzr/vim-json'
 
+Plugin 'godlygeek/tabular' " md
+Plugin 'plasticboy/vim-markdown' " md
 
 call vundle#end()            " required
 
