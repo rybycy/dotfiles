@@ -33,8 +33,13 @@ set directory=~/.vim/swaps
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 
+" this is not a good idea to open NTree by default
+" because it opens even it's completely not needed - it's better to have
+" toggle shortcut
+" au VimEnter *  NERDTree " Open NERDTree by default
 map <leader>ne :NERDTree<cr>
-map <C-n> :NERDTreeToggle<CR> " CTRL + N opens nerdtree
+map <C-n> :NERDTreeToggle<CR> " ctrl + n opens nerdtree
+map <C-f> :NERDTreeFind<CR> " ctrl + n finds in nerdtree
 
 let g:syntastic_javascript_checkers = ['jscs'] " set default javascript checker
 let g:ctrlp_working_path_mode = 'c'  " don't go up
