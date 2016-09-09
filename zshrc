@@ -25,9 +25,6 @@ source $ZSH/oh-my-zsh.sh
 ### Plugins
 plugins=(git brew colorize cp github npm osx python scala vagrant alias-tips wd git-it-on zsh-maven-plugin zsh-syntax-highlighting)
 
-### Aliases
-alias pls='sudo'
-
 #jump below
 jd(){
     if [ -z "$1" ]; then
@@ -56,6 +53,25 @@ function optimize_pdf {
 	sudo gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -sOutputFile=$2 "$1"
 }
 
+function dangerouslyReplaceInAllFilesRecursively {
+	if [[ -z "$1" ]] && [[ -z "$2" ]]; then
+		echo "Usage: dangerouslyReplaceInAllFiles <from> <to>"
+		return 1;
+	fi
+	ack --print0 -l "$1" | xargs -0 perl -pi -E "s/$1/$2/g"
+}
+
+function diveIntoJar {
+	jar="$1"
+	# Loop through the classes (everything ending in .class)
+	for class in $(jar -tf $jar | grep '.class'); do
+		# Replace /'s with .'s
+		class=${class//\//.};
+		# javap
+		javap -classpath $jar ${class//.class/};
+	done
+}
+
 incl "macosx"
 incl "bit"
 incl "vostro"
@@ -63,4 +79,3 @@ incl "vostro"
 # zsh-bd
 . $HOME/.zsh/plugins/bd/bd.zsh
 
-source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
