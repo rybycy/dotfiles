@@ -40,6 +40,8 @@ set clipboard=unnamed
 map <leader>ne :NERDTree<cr>
 map <C-n> :NERDTreeToggle<CR> " ctrl + n opens nerdtree
 map <C-f> :NERDTreeFind<CR> " ctrl + n finds in nerdtree
+map <C-t> :tabnew<CR> " CTRL + T opens new tab
+map <C-`> :tabNext<CR> " CTRL + tab goes to next tab
 
 let g:syntastic_javascript_checkers = ['jscs'] " set default javascript checker
 let g:ctrlp_working_path_mode = 'c'  " don't go up
