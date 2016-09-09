@@ -1,9 +1,6 @@
 export ZSH=~/.oh-my-zsh
 
-# Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="agnoster"
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
@@ -25,25 +22,7 @@ source $ZSH/oh-my-zsh.sh
 ### Plugins
 plugins=(git brew colorize cp github npm osx python scala vagrant alias-tips wd git-it-on zsh-maven-plugin zsh-syntax-highlighting)
 
-#jump below
-jd(){
-    if [ -z "$1" ]; then
-        echo "Usage: jd [directory]";
-        return 1
-    else
-        cd **"/$1"
-    fi
-}
-
 mkcd() { mkdir $1; cd $1; }
-
-function incl {
-	FILE=~/.zshrc_includes/.zshrc_$1
-	if [ -f $FILE ]
-	then
-		source $FILE
-	fi
-}
 
 function optimize_pdf {
 	if [ -z "$1" ] && [ -z "$2" ]; then
@@ -53,6 +32,7 @@ function optimize_pdf {
 	sudo gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -sOutputFile=$2 "$1"
 }
 
+# replace content of the current dir $1 with $2 in all files recursively
 function dangerouslyReplaceInAllFilesRecursively {
 	if [[ -z "$1" ]] && [[ -z "$2" ]]; then
 		echo "Usage: dangerouslyReplaceInAllFiles <from> <to>"
@@ -72,10 +52,5 @@ function diveIntoJar {
 	done
 }
 
-incl "macosx"
-incl "bit"
-incl "vostro"
-
-# zsh-bd
 . $HOME/.zsh/plugins/bd/bd.zsh
-
+source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
