@@ -56,6 +56,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9' 
 
+Plugin 'vimwiki/vimwiki' " vim wiki
 Plugin 'tpope/vim-surround' " parenthesizing
 Plugin 'kien/ctrlp.vim' " smart file finding
 Plugin 'altercation/vim-colors-solarized' " colours, yeah
@@ -69,13 +70,13 @@ Plugin 'honza/vim-snippets' "snippets
 Plugin 'tpope/vim-fugitive' " git wrapper
 Plugin 'airblade/vim-gitgutter' " git diff in sidebar
 
-Plugin 'lepture/vim-jinja'
-Plugin 'klen/python-mode'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'othree/html5.vim'
-Plugin 'elzr/vim-json'
+"Plugin 'lepture/vim-jinja'
+"Plugin 'klen/python-mode'
+"Plugin 'derekwyatt/vim-scala'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'mxw/vim-jsx'
+"Plugin 'othree/html5.vim'
+"Plugin 'elzr/vim-json'
 
 Plugin 'godlygeek/tabular' " md
 Plugin 'plasticboy/vim-markdown' " md
