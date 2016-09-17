@@ -1,4 +1,5 @@
 export ZSH=~/.oh-my-zsh
+export SPARK_HOME=/usr/local/spark
 
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="agnoster"
