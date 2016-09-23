@@ -56,30 +56,29 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9' 
 
+Plugin 'maciakl/vim-neatstatus' " provides beautiful status line
 Plugin 'vimwiki/vimwiki' " vim wiki
 Plugin 'tpope/vim-surround' " parenthesizing
 Plugin 'kien/ctrlp.vim' " smart file finding
 Plugin 'altercation/vim-colors-solarized' " colours, yeah
 Plugin 'scrooloose/syntastic' " syntax checking
-Plugin 'scrooloose/nerdcommenter' " commenting
+Plugin 'scrooloose/nerdcommenter' " provides <leader>(cc|c<space>) for commenting
 Plugin 'scrooloose/nerdtree' " file tree
-Plugin 'ervandew/supertab' "insert mode completions with tab
-Plugin 'mileszs/ack.vim' "plugin for ack
-Plugin 'honza/vim-snippets' "snippets
+Plugin 'ervandew/supertab' " insert mode completions with tab
 
-Plugin 'tpope/vim-fugitive' " git wrapper
+Plugin 'tpope/vim-fugitive' " git wrapper - provides :G_ commands
 Plugin 'airblade/vim-gitgutter' " git diff in sidebar
 
-"Plugin 'lepture/vim-jinja'
-"Plugin 'klen/python-mode'
-"Plugin 'derekwyatt/vim-scala'
-"Plugin 'pangloss/vim-javascript'
-"Plugin 'mxw/vim-jsx'
-"Plugin 'othree/html5.vim'
-"Plugin 'elzr/vim-json'
-
-Plugin 'godlygeek/tabular' " md
-Plugin 'plasticboy/vim-markdown' " md
+" prog
+Plugin 'lepture/vim-jinja'
+Plugin 'klen/python-mode'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'othree/html5.vim'
+Plugin 'elzr/vim-json'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'godlygeek/tabular' " text alignment
 
 call vundle#end()            " required
 
