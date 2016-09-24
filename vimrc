@@ -13,7 +13,7 @@ set ignorecase				" ignore case in pattern...
 set smartcase				" ... but still search for uppercase only even if the ignorecase option was set
 set hlsearch				" highlight search matches
 set autoindent				" use indent for new line
-set smartindent			
+set smartindent
 set smarttab
 set tabstop=8
 set shiftwidth=8
@@ -49,7 +49,7 @@ set directory=~/.vim/swaps
 set clipboard=unnamed
 
 " this is not a good idea to open NTree by default
-" because it opens even it's completely not needed - it's better to 
+" because it opens even it's completely not needed - it's better to
 map <C-l> :Limelight<CR>		" toggle limelight
 map <C-n> :NERDTreeToggle<CR>		" ctrl + n opens nerdtree
 map <C-f> :NERDTreeFind<CR>		" ctrl + f finds in nerdtree
@@ -65,7 +65,7 @@ call vundle#begin()
 
 " http://vimawesome.com/
 Plugin 'gmarik/Vundle.vim'
-Plugin 'L9' 
+Plugin 'L9'
 
 Plugin 'maciakl/vim-neatstatus'		" beautiful status line
 Plugin 'vimwiki/vimwiki'		" vim wiki
@@ -90,7 +90,7 @@ Plugin 'othree/html5.vim'
 Plugin 'gregsexton/MatchTag'		" match tags in html
 
 Plugin 'pangloss/vim-javascript'
-Plugin 'gavocanov/vim-js-indent' 
+Plugin 'gavocanov/vim-js-indent'
 Plugin 'othree/es.next.syntax.vim'
 Plugin 'mxw/vim-jsx'
 
@@ -117,36 +117,6 @@ function! JscsFix()
 endfunction
 command! JscsFix :call JscsFix()
 
-
-function! DoPrettyXML()
-  " save the filetype so we can restore it later
-  let l:origft = &ft
-  set ft=
-  " delete the xml header if it exists. This will
-  " permit us to surround the document with fake tags
-  " without creating invalid xml.
-  1s/<?xml .*?>//e
-  " insert fake tags around the entire document.
-  " This will permit us to pretty-format excerpts of
-  " XML that may contain multiple top-level elements.
-  0put ='<PrettyXML>'
-  $put ='</PrettyXML>'
-  silent %!xmllint --format -
-  " xmllint will insert an <?xml?> header. it's easy enough to delete
-  " if you don't want it.
-  " delete the fake tags
-  2d
-  $d
-  " restore the 'normal' indentation, which is one extra level
-  " too deep due to the extra tags we wrapped around the document.
-  silent %<
-  " back to home
-  1
-  " restore the filetype
-  exe "set ft=" . l:origft
-endfunction
-command! PrettyXML call DoPrettyXML()
-
 function Glastmsg()
 	read !git lastmsg
 endfunction
@@ -172,14 +142,13 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+	autocmd BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunj set filetype=jinja " use ninja highlighting on e.g. nunj templates
 endif
 
 " Syntastic confinguration
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunj set filetype=jinja " use ninja highlighting on e.g. nunj templates
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -188,13 +157,3 @@ let g:syntastic_check_on_wq = 0
 
 set background=dark
 colorscheme solarized
-
-" Quick guide
-" Most interesting vim features
-"	g~, U, u - toggle case of characters
-"	ddkP - switch current line with previous
-"
-" Best features included in plugins
-"	<leader> hp, hs, hu - chunk preview, stage, undo - git
-"	<leader> c <space> - toggle comment
-"
