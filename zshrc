@@ -1,4 +1,10 @@
+# run tmux by default
+if command -v tmux>/dev/null; then
+  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+fi
+
 export ZSH=~/.oh-my-zsh
+export TERM="xterm-256color"
 export SPARK_HOME=/usr/local/spark
 export PATH=$PATH:/usr/local/spark/bin
 
