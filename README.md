@@ -14,7 +14,11 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 ## Top most powerful keystrokes
 ### Vanilla VIM
-1. ciw/diw
+1. ciw/diw/caw/daw
+2. mark some item with `m`
+3. go to the latest position with `\`\``
+4. repeating last command with `.` and macros!
+
 ### With plugins included in my configuration
 
 # Zsh 

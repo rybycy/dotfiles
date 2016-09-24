@@ -69,7 +69,7 @@ Plugin 'L9'
 
 Plugin 'maciakl/vim-neatstatus'		" beautiful status line
 Plugin 'vimwiki/vimwiki'		" vim wiki
-Plugin 'tpope/vim-surround'		" parenthesizing
+Plugin 'tpope/vim-surround'		" parenthesizing - provides super useful keystroke of `ysiw[` which wraps current word in []
 Plugin 'kien/ctrlp.vim'			" smart file finding with CTRL+P
 Plugin 'altercation/vim-colors-solarized' " colour scheme
 Plugin 'scrooloose/syntastic'		" syntax checking
