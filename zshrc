@@ -53,6 +53,9 @@ function diveIntoJar {
 	done
 }
 
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+if [[ $OSTYPE == *"darwin"* ]]
+then
+	[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+fi
 . $HOME/.zsh/plugins/bd/bd.zsh
 source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
