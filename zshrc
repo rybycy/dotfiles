@@ -1,10 +1,9 @@
 export ZSH=~/.oh-my-zsh
 export SPARK_HOME=/usr/local/spark
+export PATH=$PATH:/usr/local/spark/bin
 
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="agnoster"
-
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
 # matches case insensitive for lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -53,7 +52,7 @@ function diveIntoJar {
 	done
 }
 
-if [[ $OSTYPE == *"darwin"* ]]
+if [[ $OSTYPE == *"darwin"* ]] 
 then
 	[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 fi
