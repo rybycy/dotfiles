@@ -1,30 +1,45 @@
 syntax on
 let mapleader=','
 
-set nocompatible              " be iMproved, required
-set laststatus=2
-set showcmd
-set showmode
-set number
-set mouse=a
-set incsearch
-set ignorecase
-set smartcase
-set hlsearch
-set autoindent
-set smartindent
+set nocompatible			" be iMproved, required
+set laststatus=2			" always show the status line
+set number				" show line number at the beginning of each line
+if has('mouse')
+	set mouse=a
+	" set ttymouse=xterm2
+endif
+set incsearch				" show search results while typing
+set ignorecase				" ignore case in pattern...
+set smartcase				" ... but still search for uppercase only even if the ignorecase option was set
+set hlsearch				" highlight search matches
+set autoindent				" use indent for new line
+set smartindent			
 set smarttab
 set tabstop=8
 set shiftwidth=8
 set softtabstop=8
-set wildmenu
-set wildmode=list:longest
-set gdefault " Add the g flag to search/replace by default
+set wildmenu				" completion
+set wildmode=list:longest		" completion
+set gdefault				" Add the g flag to search/replace by default
 set hidden
 set history=1000
-set diffopt+=vertical " we want more likely to split vertically, e.g. when diffing
-set backspace=indent,eol,start " Allow backspace in insert mode
-set autoread " autoread modified files
+set diffopt+=vertical			" split vertically, e.g. when diffing
+set backspace=indent,eol,start		" Allow backspace in insert mode
+set autoread				" autoread modified files
+set foldmethod=syntax			" fold based on indent
+set ttyfast				" faster redrawing
+if (has("termguicolors"))
+	set termguicolors
+endif
+
+" make comments and HTML attributes italic
+highlight Comment cterm=italic
+highlight htmlArg cterm=italic
+
+" show white chars and be able to toggle this mode quickly
+set list
+set listchars=tab:→\ ,trail:♣,extends:❯,precedes:❮
+map <C-k> :set list!<CR> " toggle whitespaces highlighting
 
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
@@ -34,20 +49,16 @@ set directory=~/.vim/swaps
 set clipboard=unnamed
 
 " this is not a good idea to open NTree by default
-" because it opens even it's completely not needed - it's better to have
-" toggle shortcut
-" au VimEnter *  NERDTree " Open NERDTree by default
-map <leader>ne :NERDTree<cr>
-map <C-n> :NERDTreeToggle<CR> " ctrl + n opens nerdtree
-map <C-f> :NERDTreeFind<CR> " ctrl + n finds in nerdtree
-map <C-t> :tabnew<CR> " CTRL + T opens new tab
-map <C-`> :tabNext<CR> " CTRL + tab goes to next tab
+" because it opens even it's completely not needed - it's better to 
+map <C-l> :Limelight<CR>		" toggle limelight
+map <C-n> :NERDTreeToggle<CR>		" ctrl + n opens nerdtree
+map <C-f> :NERDTreeFind<CR>		" ctrl + f finds in nerdtree
+map <C-t> :tabnew<CR>			" CTRL + t opens new tab
+map <C-`> :tabNext<CR>			" CTRL + ` goes to next tab
 
-let g:syntastic_javascript_checkers = ['jscs'] " set default javascript checker
-let g:ctrlp_working_path_mode = 'c'  " don't go up
+let g:ctrlp_working_path_mode = 'c'	" search down the current dir
 
-
-filetype off                  " required
+filetype off				" required
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -56,31 +67,40 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9' 
 
-Plugin 'maciakl/vim-neatstatus' " provides beautiful status line
-Plugin 'vimwiki/vimwiki' " vim wiki
-Plugin 'tpope/vim-surround' " parenthesizing
-Plugin 'kien/ctrlp.vim' " smart file finding
-Plugin 'altercation/vim-colors-solarized' " colours, yeah
-Plugin 'scrooloose/syntastic' " syntax checking
-Plugin 'scrooloose/nerdcommenter' " provides <leader>(cc|c<space>) for commenting
-Plugin 'scrooloose/nerdtree' " file tree
-Plugin 'ervandew/supertab' " insert mode completions with tab
+Plugin 'maciakl/vim-neatstatus'		" beautiful status line
+Plugin 'vimwiki/vimwiki'		" vim wiki
+Plugin 'tpope/vim-surround'		" parenthesizing
+Plugin 'kien/ctrlp.vim'			" smart file finding with CTRL+P
+Plugin 'altercation/vim-colors-solarized' " colour scheme
+Plugin 'scrooloose/syntastic'		" syntax checking
+Plugin 'scrooloose/nerdcommenter'	" provides <leader>(cc|c<space>) for commenting
+Plugin 'scrooloose/nerdtree'		" file tree
+Plugin 'ervandew/supertab'		" insert mode completions with tab
+Plugin 'godlygeek/tabular'		" text alignment
+Plugin 'sickill/vim-pasta'		" content-aware pasting
+Plugin 'junegunn/limelight.vim'		" hyperfocus writing in vim
 
-Plugin 'tpope/vim-fugitive' " git wrapper - provides :G_ commands
-Plugin 'airblade/vim-gitgutter' " git diff in sidebar
+Plugin 'tpope/vim-fugitive'		" git wrapper - provides :G_ commands
+Plugin 'airblade/vim-gitgutter'		" git diff in sidebar
 
 " prog
+" frontend
 Plugin 'lepture/vim-jinja'
+Plugin 'othree/html5.vim'
+Plugin 'gregsexton/MatchTag'		" match tags in html
+
+Plugin 'pangloss/vim-javascript'
+Plugin 'gavocanov/vim-js-indent' 
+Plugin 'othree/es.next.syntax.vim'
+Plugin 'mxw/vim-jsx'
+
 Plugin 'klen/python-mode'
 Plugin 'derekwyatt/vim-scala'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'othree/html5.vim'
+
 Plugin 'elzr/vim-json'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'godlygeek/tabular' " text alignment
 
-call vundle#end()            " required
+call vundle#end()			" required
 
 filetype plugin indent on
 filetype plugin on
@@ -130,7 +150,7 @@ command! PrettyXML call DoPrettyXML()
 function Glastmsg()
 	read !git lastmsg
 endfunction
-command! Glast call Glastmsg()
+command! Glastmsg all Glastmsg()
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
@@ -155,7 +175,6 @@ if has("autocmd")
 endif
 
 " Syntastic confinguration
-let g:syntastic_javascript_checkers = ['jscs']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
