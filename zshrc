@@ -1,6 +1,6 @@
 # run tmux by default
 if command -v tmux>/dev/null; then
-  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux a
 fi
 
 export ZSH=~/.oh-my-zsh
@@ -25,6 +25,9 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
+function ssht() {
+	ssh $1 -t tmux -2 a
+}
 ### Plugins
 plugins=(git brew colorize cp github npm osx python scala vagrant alias-tips wd git-it-on zsh-maven-plugin zsh-syntax-highlighting)
 

@@ -46,3 +46,11 @@ http://thoughtbot.github.io/rcm/lsrc.1.html
 1. git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 2. GITIT - remember
 3. bd - move up in the `pwd`
+
+# tmux
+- `Ctrl+b` is a prefix on a host machine
+- `Ctrl+j` is a prefix on a remote machine
+
+In order to use a config, e.g. for rpi:
+1. `scp ~/.rpi.tmux.conf pi@raspberrypi:~/.tmux.conf`
+2. `ssh pi@raspberrypi -t tmux -2 a`
