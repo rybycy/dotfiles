@@ -3,7 +3,7 @@ let mapleader=','
 
 set nocompatible			" be iMproved, required
 set laststatus=2			" always show the status line
-set number				" show line number at the beginning of each line
+set relativenumber			" show line number at the beginning of each line
 if has('mouse')
 	set mouse=a
 	" set ttymouse=xterm2
