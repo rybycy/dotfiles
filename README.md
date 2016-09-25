@@ -53,4 +53,4 @@ http://thoughtbot.github.io/rcm/lsrc.1.html
 
 In order to use a config, e.g. for rpi:
 1. `scp ~/.rpi.tmux.conf pi@raspberrypi:~/.tmux.conf`
-2. `ssh pi@raspberrypi -t tmux -2 a`
+2. `ssh pi@raspberrypi -t tmux -2 a` 
