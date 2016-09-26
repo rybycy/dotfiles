@@ -13,11 +13,12 @@ http://thoughtbot.github.io/rcm/lsrc.1.html
 
 ## Top most powerful keystrokes
 ### Vanilla VIM
-1. ciw/diw/caw/daw
+1. {y,c,d}{i,a}{w,t,p}
+{yank,change,delete}{inner,all}{word,tag,paragraph}
 2. mark some item with `m` - simply hit `m` and then `letter` and then it's possible to go back to this place with `\` + letter`
 3. use `ctrl+a` and `ctrl+x` to increase/decrease counters in your text.
 4. go to the latest position with `\`\``
-5. repeating last command with `.` and macros! *TODO* it should be browser throughroughly 
+5. repeating last command with `.` and macros! *TODO* it should be browser throughroughly
 6. `g~, gU, gu` to toggle/upper/lower the case
 7. Use `f` to find a character in current line
 8. Move your cursor to the top, mid and bottom of the screen with respectively `H, M, L` keys in normal mode
@@ -52,6 +53,7 @@ http://thoughtbot.github.io/rcm/lsrc.1.html
 4. vim-surround:
 - `ysw"` for example wraps current word with `""`
 - `cs"'` from inner quote to change surrounding from `"` to `'`
+- `cst<xyz>` replaces current surrounding tag with new `<xyz>`
 - `S<tag>` from visual mode to wrap selected items in <tag>
 5. nerdcommenter:
 - `<leader>c<space>` to toggle the comment
