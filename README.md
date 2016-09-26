@@ -60,13 +60,32 @@ http://thoughtbot.github.io/rcm/lsrc.1.html
 
 
 # Zsh 
+## Installation
 1. git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-2. GITIT - remember
-3. bd - move up in the `pwd`
+2. git clone https://github.com/peterhurford/git-it-on.zsh ~/.oh-my-zsh/custom/plugins/git-it-on
+3. pip install pygments #to make colorize plugin work
+4. git clone https://github.com/wting/autojump.git && cd autojump && chmod +x install.py && python install.py
+
+## Usage
+1. bd - move up in the `pwd`
+2. gitit - open current repo's github
+3. `colorize <file> | less` to get colorized file output
+4. autojump - allows to quickly search through visited (at least once) directories. Just type `j <partial_filename>` to see list of possible files/dirs
+5. `wd` adds tags to directory so after `wd add <dir_name>` in some directory you can do `wd <dir_name>` to immediately jump to this dir
+MORE?
 
 # tmux
+- All hotkeys visible via `ctrl + ?`
 - `Ctrl+b` is a prefix on a host machine
 - `Ctrl+j` is a prefix on a remote machine
+- Most useful ones:
+- - `n`/`p` go to to next/previous window
+- - `<number>` to go to specified window
+- - `attach`/`detach`
+- - `c` to create a window
+- - `}` to swap windows
+- - `<right>`/`<left>` to move between panes
+- - `%` / `"` to split windows with panes - horizontally/vertically
 
 In order to use a config, e.g. for rpi:
 1. `scp ~/.rpi.tmux.conf pi@raspberrypi:~/.tmux.conf`

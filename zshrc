@@ -29,7 +29,17 @@ function ssht() {
 	ssh $1 -t tmux -2 a
 }
 ### Plugins
-plugins=(git brew colorize cp github npm osx python scala vagrant alias-tips wd git-it-on zsh-maven-plugin zsh-syntax-highlighting)
+plugins=(git
+	brew		# brew completion
+	colorize	# colorize file's content
+	npm		# npm autocompletion
+	python		# python interpreter completion
+	scala		# scala/scalac completion
+	vagrant		# vagrant autocompletion
+	wd		# add tags to directory
+	git-it-on	# go to github of current repo
+	mvn		# maven completion
+	zsh-syntax-highlighting)
 
 mkcd() { mkdir $1; cd $1; }
 
@@ -61,9 +71,12 @@ function diveIntoJar {
 	done
 }
 
-if [[ $OSTYPE == *"darwin"* ]] 
+if [[ $OSTYPE == *"darwin"* ]]
 then
 	[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+else
+	[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+	autoload -U compinit && compinit -u
 fi
 . $HOME/.zsh/plugins/bd/bd.zsh
 source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
