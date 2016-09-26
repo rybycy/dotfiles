@@ -14,14 +14,22 @@ http://thoughtbot.github.io/rcm/lsrc.1.html
 ## Top most powerful keystrokes
 ### Vanilla VIM
 1. ciw/diw/caw/daw
-2. ddkp to swap the lines
-3. mark some item with `m` - simply hit `m` and then `letter` and then it's possible to go back to this place with `\` + letter`
+2. mark some item with `m` - simply hit `m` and then `letter` and then it's possible to go back to this place with `\` + letter`
+3. use `ctrl+a` and `ctrl+x` to increase/decrease counters in your text.
 4. go to the latest position with `\`\``
-5. repeating last command with `.` and macros!
+5. repeating last command with `.` and macros! *TODO* it should be browser throughroughly 
 6. `g~, gU, gu` to toggle/upper/lower the case
 7. Use `f` to find a character in current line
 8. Move your cursor to the top, mid and bottom of the screen with respectively `H, M, L` keys in normal mode
-
+9. Copy something to register with simply `"<register>yy` and then paste with `"<register>p"`
+- awesome shortcut - when in INSERT mode just hit `ctrl + r` and `<register>` to simply paste register's value, use `<ctrl> + a` to paste the last one.
+10. Use completion modes. Hit ctrl + x and then:
+- ctrl + l to complete whole lines for file
+- ctrl + p to complete words
+- ctrl + f to complete filenames
+- ctrl + o for omnicompletion `<li>abc</` and then omnicompletion will close html tag
+- ctrl + n for keywords in current file
+11. `za`/`zc`/`zo` to toggle/close/open folding
 
 ### My additions
 1. `Glastmsg` command - run this command while commiting to paste the last msg inside the text. Useful when you want to reuse some piece of information from the previous commit message (jira ticket number for instance)
@@ -42,7 +50,7 @@ http://thoughtbot.github.io/rcm/lsrc.1.html
 - `Gedit SHA` -
 - `Gstatus` - git status in good looking
 4. vim-surround:
-- `ysiw"` for example wraps current word with `""`
+- `ysw"` for example wraps current word with `""`
 - `cs"'` from inner quote to change surrounding from `"` to `'`
 - `S<tag>` from visual mode to wrap selected items in <tag>
 5. nerdcommenter:
