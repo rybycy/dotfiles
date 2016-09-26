@@ -67,3 +67,4 @@ then
 fi
 . $HOME/.zsh/plugins/bd/bd.zsh
 source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+DISABLE_AUTO_TITLE=true
