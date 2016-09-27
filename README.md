@@ -57,7 +57,9 @@ http://thoughtbot.github.io/rcm/lsrc.1.html
 - `S<tag>` from visual mode to wrap selected items in <tag>
 5. nerdcommenter:
 - `<leader>c<space>` to toggle the comment
-
+6. ack.vim:
+- `:Ack <phrase> <dir>` - dir defaults to current if absent
+- `t` - open in new tab
 
 # Zsh 
 ## Installation

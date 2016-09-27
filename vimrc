@@ -79,6 +79,7 @@ Plugin 'ervandew/supertab'		" insert mode completions with tab
 Plugin 'godlygeek/tabular'		" text alignment
 Plugin 'sickill/vim-pasta'		" content-aware pasting
 Plugin 'junegunn/limelight.vim'		" hyperfocus writing in vim
+Plugin 'mileszs/ack.vim'		" ack for vim
 
 Plugin 'tpope/vim-fugitive'		" git wrapper - provides :G_ commands
 Plugin 'airblade/vim-gitgutter'		" git diff in sidebar
