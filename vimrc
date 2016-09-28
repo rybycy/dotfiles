@@ -15,6 +15,7 @@ set hlsearch				" highlight search matches
 set autoindent				" use indent for new line
 set smartindent
 set smarttab
+set expandtab				" replace tabs with spaces when indenting
 set tabstop=8
 set shiftwidth=8
 set softtabstop=8

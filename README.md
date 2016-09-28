@@ -7,11 +7,12 @@ http://thoughtbot.github.io/rcm/lsrc.1.html
 - `rcup -d . from this dir`
 
 # Vim
+## Prerequisites
 1. install vundle
 2. sudo apt-get install vim-nox for ruby support
 3. mkdir .vim/backups && mkdir .vim/swaps
 
-## Top most powerful keystrokes
+## Keystrokes
 ### Vanilla VIM
 1. {y,c,d}{i,a}{w,t,p}
 {yank,change,delete}{inner,all}{word,tag,paragraph}
@@ -31,37 +32,61 @@ http://thoughtbot.github.io/rcm/lsrc.1.html
 - ctrl + o for omnicompletion `<li>abc</` and then omnicompletion will close html tag
 - ctrl + n for keywords in current file
 11. `za`/`zc`/`zo` to toggle/close/open folding
+12. In order to change all existing tab characters to match settings, run `:retab`
+13. To unwrap something, e.g.
+`([{foo: bar}]) -> {foo: bar}` just do:
+- `ya}` to yank content of inner braces (inclusive)
+- `va(` to select everything in `()` (inclusive)
+- `p` to replace selected content with the yanked one
 
 ### My additions
 1. `Glastmsg` command - run this command while commiting to paste the last msg inside the text. Useful when you want to reuse some piece of information from the previous commit message (jira ticket number for instance)
 2. `<leader>ss` to remove redundant trailing spaces all over the document
 
 ### With plugins included in my configuration
-1. nerdtree -
+1. *nerdtree* -
 - `ctrl + n` to toggle
 - `ctrl + f` to show the current node
 - inside the nerdtree hit `m` to show menu, where you can create a file or something
-2. ctrlp - simply hit `ctrl + p` to search through current file's repository
+2. *ctrlp* - simply hit `ctrl + p` to search through current file's repository
 - `ctrl + d` to enter filename-only search
 - `ctrl + t` to open a selection in a new tab
 - `ctrl + x or v` to open a selection in a new split
-3. fugitive:
+3. *fugitive*:
 - `Gblame` - git blame. Hit `o` when blaming to see the full commit info
 - `Glog` - loads all previous version of the file - `cprev`/`cnext`/`cfirst`/`clast` commands allow you to move between version freely
 - `Gedit SHA` -
 - `Gstatus` - git status in good looking
-4. vim-surround:
+4. *vim-surround*:
 - `ysw"` for example wraps current word with `""`
 - `cs"'` from inner quote to change surrounding from `"` to `'`
 - `cst<xyz>` replaces current surrounding tag with new `<xyz>`
 - `S<tag>` from visual mode to wrap selected items in <tag>
-5. nerdcommenter:
+5. *nerdcommenter*:
 - `<leader>c<space>` to toggle the comment
 6. ack.vim:
 - `:Ack <phrase> <dir>` - dir defaults to current if absent
 - `t` - open in new tab
 
-# Zsh 
+# General bash tips
+## Movement
+- `ctrl + a`/`ctrl + e` - *beginning/end* of the line
+- `ctrl + k` - *delete* to the end of the line
+- `ctrl + r`/`ctrl + s` - search *backward/forward*
+- `ctrl + w` - *delete* the word behind the cursor
+
+## Useful commands
+- use `!$` to reuse last word of the last command.
+- use `!!` to reuse last command
+- `~-`/`~+` + `TAB` to show the list of recently entered dirs
+
+## Tools
+- pipe your file to `less` if it's too big to fit on screen. Use `head` or `tail` (or even `tail -f` to follow the end of the file) to see the specific part of the file
+- `wc` to count lines, words or characters. Useful if you want to pipe things into `wc` in order to e.g. find the number of matching files from `find`
+- `grep` allows you to search a string inside the files. `-r` for recursive search.
+- use `ssh-copy-id` to copy your identity file to a remote host.
+
+# Zsh
 ## Installation
 1. git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 2. git clone https://github.com/peterhurford/git-it-on.zsh ~/.oh-my-zsh/custom/plugins/git-it-on
@@ -75,6 +100,7 @@ http://thoughtbot.github.io/rcm/lsrc.1.html
 4. autojump - allows to quickly search through visited (at least once) directories. Just type `j <partial_filename>` to see list of possible files/dirs
 5. `wd` adds tags to directory so after `wd add <dir_name>` in some directory you can do `wd <dir_name>` to immediately jump to this dir
 MORE?
+6. `take` to create a directory and change to it
 
 # tmux
 - All hotkeys visible via `ctrl + ?`
@@ -91,4 +117,7 @@ MORE?
 
 In order to use a config, e.g. for rpi:
 1. `scp ~/.rpi.tmux.conf pi@raspberrypi:~/.tmux.conf`
-2. `ssh pi@raspberrypi -t tmux -2 a` 
+2. `ssh pi@raspberrypi -t tmux -2 a`
+
+# Tools
+- use `cloc` application in order to reveal the number of lines of code in your project

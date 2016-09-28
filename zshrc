@@ -41,8 +41,6 @@ plugins=(git
 	mvn		# maven completion
 	zsh-syntax-highlighting)
 
-mkcd() { mkdir $1; cd $1; }
-
 function optimize_pdf {
 	if [ -z "$1" ] && [ -z "$2" ]; then
 		echo "Usage: optimize_pdf input_file output_file"
