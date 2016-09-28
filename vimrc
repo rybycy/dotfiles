@@ -16,9 +16,9 @@ set autoindent				" use indent for new line
 set smartindent
 set smarttab
 set expandtab				" replace tabs with spaces when indenting
-set tabstop=8
-set shiftwidth=8
-set softtabstop=8
+set tabstop=4                           " number of spaces equal to tab
+set shiftwidth=4                        " number of spaces used for intendation
+set softtabstop=4                       " backspace treats 4 spaces like a tab
 set wildmenu				" completion
 set wildmode=list:longest		" completion
 set gdefault				" Add the g flag to search/replace by default
@@ -33,6 +33,9 @@ if (has("termguicolors"))
 	set termguicolors
 endif
 
+" use ag instead of ack as a grepping tool
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 " make comments and HTML attributes italic
 highlight Comment cterm=italic
 highlight htmlArg cterm=italic
@@ -40,7 +43,7 @@ highlight htmlArg cterm=italic
 " show white chars and be able to toggle this mode quickly
 set list
 set listchars=tab:→\ ,trail:♣,extends:❯,precedes:❮
-map <C-k> :set list!<CR> " toggle whitespaces highlighting
+map <Leader>tw :set list!<CR> " toggle whitespaces highlighting
 
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
@@ -49,11 +52,23 @@ set directory=~/.vim/swaps
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 
+" Limelight config
+map <Leader>tl :Limelight!!<CR>		" toggle limelight
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+
 " this is not a good idea to open NTree by default
 " because it opens even it's completely not needed - it's better to
-map <C-l> :Limelight<CR>		" toggle limelight
 map <C-n> :NERDTreeToggle<CR>		" ctrl + n opens nerdtree
 map <C-f> :NERDTreeFind<CR>		" ctrl + f finds in nerdtree
+
+" tabs options
 map <C-t> :tabnew<CR>			" CTRL + t opens new tab
 map <C-`> :tabNext<CR>			" CTRL + ` goes to next tab
 
@@ -107,17 +122,6 @@ call vundle#end()			" required
 filetype plugin indent on
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
-
-function! JscsFix()
-    "Save current cursor position"
-    let l:winview = winsaveview()
-    "Pipe the current buffer (%) through the jscs -x command"
-    % ! jscs -x
-    "Restore cursor position - this is needed as piping the file"
-    "through jscs jumps the cursor to the top"
-    call winrestview(l:winview)
-endfunction
-command! JscsFix :call JscsFix()
 
 function Glastmsg()
 	read !git lastmsg
