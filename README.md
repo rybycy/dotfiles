@@ -103,6 +103,8 @@ MORE?
 6. `take` to create a directory and change to it
 
 # tmux
+1. On mac os x, install `brew install reattach-to-user-namespace`
+
 - All hotkeys visible via `ctrl + ?`
 - `Ctrl+b` is a prefix on a host machine
 - `Ctrl+j` is a prefix on a remote machine
@@ -121,3 +123,6 @@ In order to use a config, e.g. for rpi:
 
 # Tools
 - use `cloc` application in order to reveal the number of lines of code in your project
+
+? TODO ?
+man tee
