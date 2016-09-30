@@ -6,7 +6,6 @@ set laststatus=2			" always show the status line
 set relativenumber			" show line number at the beginning of each line
 if has('mouse')
 	set mouse=a
-	" set ttymouse=xterm2
 endif
 set incsearch				" show search results while typing
 set ignorecase				" ignore case in pattern...
@@ -29,9 +28,6 @@ set backspace=indent,eol,start		" Allow backspace in insert mode
 set autoread				" autoread modified files
 set foldmethod=syntax			" fold based on indent
 set ttyfast				" faster redrawing
-if (has("termguicolors"))
-	set termguicolors
-endif
 
 " use ag instead of ack as a grepping tool
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -43,7 +39,11 @@ highlight htmlArg cterm=italic
 " show white chars and be able to toggle this mode quickly
 set list
 set listchars=tab:→\ ,trail:♣,extends:❯,precedes:❮
-map <Leader>tw :set list!<CR> " toggle whitespaces highlighting
+nnoremap <Leader>tw :set list!<CR>              " toggle whitespaces highlighting
+nnoremap <Leader>lx :%!xmllint --format -       "lint xml
+
+nnoremap <Leader>sh :split<CR>                  " split horizontally
+nnoremap <Leader>sv :vsplit<CR>                 " split vertically
 
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
@@ -66,7 +66,7 @@ let g:limelight_conceal_guifg = '#777777'
 " this is not a good idea to open NTree by default
 " because it opens even it's completely not needed - it's better to
 map <C-n> :NERDTreeToggle<CR>		" ctrl + n opens nerdtree
-map <C-f> :NERDTreeFind<CR>		" ctrl + f finds in nerdtree
+map <leader>sf :NERDTreeFind<CR>		" ctrl + f finds in nerdtree
 
 " tabs options
 map <C-t> :tabnew<CR>			" CTRL + t opens new tab

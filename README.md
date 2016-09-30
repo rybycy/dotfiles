@@ -12,14 +12,17 @@ http://thoughtbot.github.io/rcm/lsrc.1.html
 2. sudo apt-get install vim-nox for ruby support
 3. mkdir .vim/backups && mkdir .vim/swaps
 
+
 ## Keystrokes
 ### Vanilla VIM
-1. {y,c,d}{i,a}{w,t,p}
-{yank,change,delete}{inner,all}{word,tag,paragraph}
-2. mark some item with `m` - simply hit `m` and then `letter` and then it's possible to go back to this place with `\` + letter`
-3. use `ctrl+a` and `ctrl+x` to increase/decrease counters in your text.
-4. go to the latest position with `\`\``
-5. repeating last command with `.` and macros! *TODO* it should be browser throughroughly
+1. `{y,c,d}{i,a}{w,t,p}` = `{yank,change,delete}{inner,all}{word,tag,paragraph}`
+2. you can `m(<sub>ark</sub>)` items in order to return to them later - simply hit `m` and then `letter` and then it's possible to go back to this place with `\` + letter`
+3. use `ctrl+a(dd)` and `ctrl+x(tract)` to increase/decrease counters in your text.
+4. go to the latest position with `` ` ` `` (two backticks)
+5. repeating last command with `.` and macros!
+- start recording with `q<register_letter>`. Invoke with `@<register_letter>`. `@@` invokes the latest macro
+- hit `(ctrl + r) + =` in insert mode in order to enter an expression mode.
+- write an expression, you can include your yanked content with `(ctrl + r) + "`. Useful when you need to increment or operate on some kind of a variable within the macro. 
 6. `g~, gU, gu` to toggle/upper/lower the case
 7. Use `f` to find a character in current line
 8. Move your cursor to the top, mid and bottom of the screen with respectively `H, M, L` keys in normal mode
@@ -38,15 +41,31 @@ http://thoughtbot.github.io/rcm/lsrc.1.html
 - `ya}` to yank content of inner braces (inclusive)
 - `va(` to select everything in `()` (inclusive)
 - `p` to replace selected content with the yanked one
+14. Replacement has some super features:
+- `:%s//abc` will replace all occurences of your last search. Search with `/def` and then run `/%s//abc` to replace all `def`'s with `abc`'s
+- use `g` flag to replace all in file occurences
+- use `c` flag to confirm every replacement
+- `:%s/\<foo\>/bar/gc` wrap words in `\<\>` in order to search for full words onyl
+15. Use `ctrl + o(ut)`/`ctrl + i(n)` to go to previous/next file
+16. `gv` in the visual mode returns to the latest selection
+17. `ctrl + f/b` to move backward/forward a page; `ctrl + u/d` to go `up/down` half a page. `ctrl + e/y` to move without moving a cursor
+18. `zz/zt/zb` to move screen and place cursor's position at `center/top/bottom`
+19. You can escape insert mode with `ctrl + c` as well.
+20. `X` in normal mode to remove character backwards.
+21. `gi` puts you in insert mode in the last position you were while in insert mode.
+22. use `:split` and `:vsplit` commands to split the screen horizontally/vertically
+23. when you start editing multiple files with vim with e.g. `vim a.txt b.txt` you can navigate between them with `[a`/`]a` keys
 
 ### My additions
 1. `Glastmsg` command - run this command while commiting to paste the last msg inside the text. Useful when you want to reuse some piece of information from the previous commit message (jira ticket number for instance)
 2. `<leader>ss` to remove redundant trailing spaces all over the document
+3. `<Leader>lx` to lint xml
+4. `<Leader>sh` to split horizontally, `<Leader>sv` to split vertically
 
 ### With plugins included in my configuration
 1. *nerdtree* -
-- `ctrl + n` to toggle
-- `ctrl + f` to show the current node
+- `ctrl + n` to toggle *n*erdtree
+- `<leader>sf` to *s*how the current *f*ile (node in NerdTree)
 - inside the nerdtree hit `m` to show menu, where you can create a file or something
 2. *ctrlp* - simply hit `ctrl + p` to search through current file's repository
 - `ctrl + d` to enter filename-only search
@@ -103,8 +122,6 @@ MORE?
 6. `take` to create a directory and change to it
 
 # tmux
-1. On mac os x, install `brew install reattach-to-user-namespace`
-
 - All hotkeys visible via `ctrl + ?`
 - `Ctrl+b` is a prefix on a host machine
 - `Ctrl+j` is a prefix on a remote machine
@@ -123,6 +140,3 @@ In order to use a config, e.g. for rpi:
 
 # Tools
 - use `cloc` application in order to reveal the number of lines of code in your project
-
-? TODO ?
-man tee
