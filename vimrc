@@ -83,22 +83,24 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
 
-Plugin 'maciakl/vim-neatstatus'		" beautiful status line
-Plugin 'vimwiki/vimwiki'		" vim wiki
-Plugin 'tpope/vim-surround'		" parenthesizing - provides super useful keystroke of `ysiw[` which wraps current word in []
-Plugin 'kien/ctrlp.vim'			" smart file finding with CTRL+P
 Plugin 'altercation/vim-colors-solarized' " colour scheme
+Plugin 'sjl/badwolf' " colour scheme
+
+Plugin 'maciakl/vim-neatstatus'		" beautiful status line
+Plugin 'vimwiki/vimwiki'		    " vim wiki
+Plugin 'tpope/vim-surround'		    " parenthesizing - provides super useful keystroke of `ysiw[` which wraps current word in []
+Plugin 'kien/ctrlp.vim'			    " smart file finding with CTRL+P
 Plugin 'scrooloose/syntastic'		" syntax checking
 Plugin 'scrooloose/nerdcommenter'	" provides <leader>(cc|c<space>) for commenting
 Plugin 'scrooloose/nerdtree'		" file tree
-Plugin 'ervandew/supertab'		" insert mode completions with tab
-Plugin 'godlygeek/tabular'		" text alignment
-Plugin 'sickill/vim-pasta'		" content-aware pasting
+Plugin 'ervandew/supertab'	    	" insert mode completions with tab
+Plugin 'godlygeek/tabular'		    " text alignment
+Plugin 'sickill/vim-pasta'		    " content-aware pasting
 Plugin 'junegunn/limelight.vim'		" hyperfocus writing in vim
-Plugin 'mileszs/ack.vim'		" ack for vim
+Plugin 'mileszs/ack.vim'		    " ack for vim
 
-Plugin 'tpope/vim-fugitive'		" git wrapper - provides :G_ commands
-Plugin 'airblade/vim-gitgutter'		" git diff in sidebar
+Plugin 'tpope/vim-fugitive'     " git wrapper - provides :G_ commands
+Plugin 'airblade/vim-gitgutter' " git diff in sidebar
 
 " prog
 " frontend
