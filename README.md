@@ -112,6 +112,9 @@ Basic actions: ***{y<sub>ank</sub>,c<sub>hange</sub>,d<sub>elete</sub>, v<sub>is
 7. tabularize.vim
     - `:Tab /=` to use a column layout with `=` as a separator
 
+### Useless yet interesting hacks
+- you can write only specific files. Just enter `:15,19 w` to write lines 15,16,17,18,19 only.
+
 # General bash tips
 ## Movement
 - `ctrl + a`/`ctrl + e` - *beginning/end* of the line

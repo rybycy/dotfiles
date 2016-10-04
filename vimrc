@@ -42,6 +42,16 @@ set listchars=tab:→\ ,trail:♣,extends:❯,precedes:❮
 nnoremap <Leader>tw :set list!<CR>              " toggle whitespaces highlighting
 nnoremap <Leader>lx :%!xmllint --format -       "lint xml
 
+nnoremap <Leader>w :w<CR>                       " save file shortcut
+
+"copy and paste to system clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
 nnoremap <Leader>sh :split<CR>                  " split horizontally
 nnoremap <Leader>sv :vsplit<CR>                 " split vertically
 
@@ -167,3 +177,12 @@ let g:syntastic_check_on_wq = 0
 
 set background=dark
 colorscheme solarized
+
+" Fat-fingers, halp, halp!
+:command WQ wq
+:command Wq wq
+:command Wqa wqa
+:command W w
+:command Q q
+:command QA qa
+:command Qa qa
