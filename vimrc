@@ -1,5 +1,5 @@
 syntax on
-let mapleader=','
+let mapleader='\<Space>'
 
 set nocompatible			" be iMproved, required
 set laststatus=2			" always show the status line
@@ -101,6 +101,8 @@ Plugin 'mileszs/ack.vim'		    " ack for vim
 
 Plugin 'tpope/vim-fugitive'     " git wrapper - provides :G_ commands
 Plugin 'airblade/vim-gitgutter' " git diff in sidebar
+
+Plugin 'lervag/vimtex'          " LateX support
 
 " prog
 " frontend
