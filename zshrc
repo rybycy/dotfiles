@@ -72,9 +72,13 @@ function diveIntoJar {
 if [[ $OSTYPE == *"darwin"* ]]
 then
 	[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+    alias cpwd="pwd | pbcopy"
+    alias ccommand="echo !! | pbcopy"
+    # alias cfile
 else
 	[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
 	autoload -U compinit && compinit -u
+    alias ccommand="echo !! | xcopy" # todo
 fi
 . $HOME/.zsh/plugins/bd/bd.zsh
 source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
