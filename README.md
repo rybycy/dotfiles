@@ -161,6 +161,8 @@ MORE?
 - - `}` to swap windows
 - - `<right>`/`<left>` to move between panes
 - - `%` / `"` to split windows with panes - horizontally/vertically
+- - `$` to rename session
+- - `z` to fullscreen pane
 
 In order to use a config, e.g. for rpi:
 1. `scp ~/.rpi.tmux.conf pi@raspberrypi:~/.tmux.conf`
