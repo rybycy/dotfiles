@@ -14,10 +14,9 @@ set hlsearch				" highlight search matches
 set autoindent				" use indent for new line
 set smartindent
 set smarttab
-set expandtab				" replace tabs with spaces when indenting
 set tabstop=4                           " number of spaces equal to tab
 set shiftwidth=4                        " number of spaces used for intendation
-set softtabstop=4                       " backspace treats 4 spaces like a tab
+set expandtab				" replace tabs with spaces when indenting
 set wildmenu				" completion
 set wildmode=list:longest		" completion
 set gdefault				" Add the g flag to search/replace by default
@@ -26,7 +25,7 @@ set history=1000
 set diffopt+=vertical			" split vertically, e.g. when diffing
 set backspace=indent,eol,start		" Allow backspace in insert mode
 set autoread				" autoread modified files
-set foldmethod=syntax			" fold based on indent
+set foldmethod=manual			" fold based on indent
 set ttyfast				" faster redrawing
 
 " use ag instead of ack as a grepping tool
@@ -77,6 +76,7 @@ let g:limelight_conceal_guifg = '#777777'
 " because it opens even it's completely not needed - it's better to
 map <C-n> :NERDTreeToggle<CR>		" ctrl + n opens nerdtree
 map <leader>sf :NERDTreeFind<CR>		" ctrl + f finds in nerdtree
+map <F2> :retab <CR> :wq! <CR>
 
 " tabs options
 map <C-t> :tabnew<CR>			" CTRL + t opens new tab
@@ -94,7 +94,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
 
 Plugin 'altercation/vim-colors-solarized' " colour scheme
-Plugin 'sjl/badwolf' " colour scheme
 
 Plugin 'maciakl/vim-neatstatus'		" beautiful status line
 Plugin 'vimwiki/vimwiki'		    " vim wiki
@@ -106,7 +105,7 @@ Plugin 'scrooloose/nerdtree'		" file tree
 Plugin 'ervandew/supertab'	    	" insert mode completions with tab
 Plugin 'godlygeek/tabular'		    " text alignment
 Plugin 'sickill/vim-pasta'		    " content-aware pasting
-Plugin 'junegunn/limelight.vim'		" hyperfocus writing in vim
+" Plugin 'junegunn/limelight.vim'		" hyperfocus writing in vim
 Plugin 'mileszs/ack.vim'		    " ack for vim
 
 Plugin 'tpope/vim-fugitive'     " git wrapper - provides :G_ commands
@@ -175,7 +174,11 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-set background=dark
+let g:javascript_plugin_jsdoc = 1 " configure javascript plugin
+
+" set background=dark
+:set t_Co=256
+let g:solarized_termcolors=256
 colorscheme solarized
 
 " Fat-fingers, halp, halp!

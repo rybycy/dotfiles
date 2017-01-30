@@ -1,7 +1,7 @@
 # run tmux by default
-if command -v tmux>/dev/null; then
-  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux a
-fi
+#if command -v tmux>/dev/null; then
+#  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux a
+#fi
 
 export ZSH=~/.oh-my-zsh
 export TERM="xterm-256color"
@@ -49,6 +49,8 @@ function optimize_pdf {
 	sudo gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -sOutputFile=$2 "$1"
 }
 
+alias GIT_SORRY_I_AM_VERY_STUPID=$(git reset 'HEAD@{1}')
+
 # replace content of the current dir $1 with $2 in all files recursively
 function dangerouslyReplaceInAllFilesRecursively {
 	if [[ -z "$1" ]] && [[ -z "$2" ]]; then
@@ -67,6 +69,13 @@ function diveIntoJar {
 		# javap
 		javap -classpath $jar ${class//.class/};
 	done
+}
+
+function movToWebm {
+    #brew install ffmpeg --with-libvpx
+    src="$1"
+    target="$2"
+    ffmpeg -i "$src" -c:v libvpx -crf 10 -b:v 1M -c:a libvorbis "$target"
 }
 
 if [[ $OSTYPE == *"darwin"* ]]
