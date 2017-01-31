@@ -5,6 +5,9 @@ http://thoughtbot.github.io/rcm/lsrc.1.html
 - `git clone git@github.com:rybycy/dotfiles.git`
 - `cd dotfiles`
 - `rcup -d . from this dir`
+- install vundle for vim
+- vim: PluginInstall
+- install tmux-resurrect for tmux: https://github.com/tmux-plugins/tmux-resurrect
 
 # Vim
 ## Prerequisites

@@ -1,5 +1,6 @@
 syntax on
-let mapleader='\<Space>'
+"let mapleader='\<Space>'
+let mapleader=','
 
 set nocompatible			" be iMproved, required
 set laststatus=2			" always show the status line
@@ -176,9 +177,9 @@ let g:syntastic_check_on_wq = 0
 
 let g:javascript_plugin_jsdoc = 1 " configure javascript plugin
 
-" set background=dark
-:set t_Co=256
-let g:solarized_termcolors=256
+set background=dark
+" :set t_Co=256
+" let g:solarized_termcolors=256
 colorscheme solarized
 
 " Fat-fingers, halp, halp!
