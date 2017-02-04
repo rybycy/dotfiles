@@ -1,3 +1,10 @@
+" initial setup
+if exists('*mkdir') && !isdirectory($HOME.'/.vim/files')
+  call mkdir($HOME.'/.vim/files')
+  call mkdir($HOME.'/.vim/files/swaps')
+  call mkdir($HOME.'/.vim/files/backups')
+endif
+
 syntax on
 let mapleader=' '
 
@@ -27,7 +34,6 @@ set backspace=indent,eol,start		" Allow backspace in insert mode
 set autoread				" autoread modified files
 set foldmethod=manual			" fold based on indent
 set ttyfast				" faster redrawing
-
 " use ag instead of ack as a grepping tool
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
@@ -55,8 +61,10 @@ nnoremap <Leader>sh :split<CR>                  " split horizontally
 nnoremap <Leader>sv :vsplit<CR>                 " split vertically
 
 " Centralize backups, swapfiles and undo history
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
+set backupdir=~/.vim/files/backups
+set directory=~/.vim/files/swaps
+" set undodir=~/.vim/files/undos
+" set undofile            " keep undofile
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
@@ -105,11 +113,12 @@ Plugin 'scrooloose/nerdtree'		" file tree
 Plugin 'ervandew/supertab'	    	" insert mode completions with tab
 Plugin 'godlygeek/tabular'		    " text alignment
 Plugin 'sickill/vim-pasta'		    " content-aware pasting
-" Plugin 'junegunn/limelight.vim'		" hyperfocus writing in vim
+Plugin 'junegunn/limelight.vim'		" hyperfocus writing in vim
 Plugin 'mileszs/ack.vim'		    " ack for vim
 Plugin 'terryma/vim-expand-region'
 Plugin 'tpope/vim-fugitive'     " git wrapper - provides :G_ commands
 Plugin 'airblade/vim-gitgutter' " git diff in sidebar
+Plugin 'alvan/vim-closetag'     " close xml/html tags
 
 Plugin 'lervag/vimtex'          " LateX support
 
@@ -165,14 +174,16 @@ if has("autocmd")
 endif
 
 " Syntastic confinguration
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { "mode": "active",
+                           \ "active_filetypes": [],
+                           \ "passive_filetypes": ["scala"] }
 
 let g:javascript_plugin_jsdoc = 1 " configure javascript plugin
 
@@ -180,6 +191,8 @@ set background=dark
 " :set t_Co=256
 " let g:solarized_termcolors=256
 colorscheme solarized
+
+let g:closetag_filenames = "*.xml,*.xslt,*.html,*.xhtml,*.phtml"
 
 " Fat-fingers, halp, halp!
 :command WQ wq
