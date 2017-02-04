@@ -5,14 +5,14 @@ if exists('*mkdir') && !isdirectory($HOME.'/.vim/files')
   call mkdir($HOME.'/.vim/files/backups')
 endif
 
+" global settings
 syntax on
 let mapleader=' '
-
 set nocompatible			" be iMproved, required
 set laststatus=2			" always show the status line
 set relativenumber			" show line number at the beginning of each line
 if has('mouse')
-	set mouse=a
+	set mouse=a             " mouse support
 endif
 set incsearch				" show search results while typing
 set ignorecase				" ignore case in pattern...
@@ -34,63 +34,26 @@ set backspace=indent,eol,start		" Allow backspace in insert mode
 set autoread				" autoread modified files
 set foldmethod=manual			" fold based on indent
 set ttyfast				" faster redrawing
-" use ag instead of ack as a grepping tool
-let g:ackprg = 'ag --nogroup --nocolor --column'
+set clipboard=unnamed " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 
-" make comments and HTML attributes italic
-highlight Comment cterm=italic
+set backupdir=~/.vim/files/backups " Centralize backups, swapfiles and undo history
+set directory=~/.vim/files/swaps
+
+highlight Comment cterm=italic " make comments and HTML attributes italic
 highlight htmlArg cterm=italic
 
-" show white chars and be able to toggle this mode quickly
 set list
-set listchars=tab:→\ ,trail:♣,extends:❯,precedes:❮
+set listchars=tab:→\ ,trail:♣,extends:❯,precedes:❮ " show white characters
+
+" -------- Global key bindings
+
 nnoremap <Leader>tw :set list!<CR>              " toggle whitespaces highlighting
-nnoremap <Leader>lx :%!xmllint --format -       "lint xml
-
-nnoremap <Leader>w :w<CR>                       " save file shortcut
-
-"copy and paste to system clipboard
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
-
+nnoremap <Leader>lx :%!xmllint --format -       " lint xml
 nnoremap <Leader>sh :split<CR>                  " split horizontally
 nnoremap <Leader>sv :vsplit<CR>                 " split vertically
 
-" Centralize backups, swapfiles and undo history
-set backupdir=~/.vim/files/backups
-set directory=~/.vim/files/swaps
-" set undodir=~/.vim/files/undos
-" set undofile            " keep undofile
-
-" Use the OS clipboard by default (on versions compiled with `+clipboard`)
-set clipboard=unnamed
-
-" Limelight config
-map <Leader>tl :Limelight!!<CR>		" toggle limelight
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-
-" Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = 'DarkGray'
-let g:limelight_conceal_guifg = '#777777'
-
-
-" this is not a good idea to open NTree by default
-" because it opens even it's completely not needed - it's better to
-map <C-n> :NERDTreeToggle<CR>		" ctrl + n opens nerdtree
-map <leader>sf :NERDTreeFind<CR>		" ctrl + f finds in nerdtree
-map <F2> :retab <CR> :wq! <CR>
-
-" tabs options
 map <C-t> :tabnew<CR>			" CTRL + t opens new tab
 map <C-`> :tabNext<CR>			" CTRL + ` goes to next tab
-
-let g:ctrlp_working_path_mode = 'c'	" search down the current dir
 
 filetype off				" required
 
@@ -141,29 +104,49 @@ Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()			" required
 
+" ------------ Plugin configuration
+" vim-ack
+" use ag instead of ack as a grepping tool
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" Limelight
+map <Leader>tl :Limelight!!<CR>		" toggle limelight
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Nerdtree
+map <C-n> :NERDTreeToggle<CR>		" ctrl + n opens nerdtree
+map <leader>sf :NERDTreeFind<CR>		" ctrl + f finds in nerdtree
+map <F2> :retab <CR> :wq! <CR>
+
+" Ctrl + P
+let g:ctrlp_working_path_mode = 'c'	" search down the current dir
+
 filetype plugin indent on
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+
+" ----------- Custom function
 
 function Glastmsg()
 	read !git lastmsg
 endfunction
 command! Glastmsg all Glastmsg()
 
-" Strip trailing whitespace (,ss)
-function! StripWhitespace()
+function! StripWhitespace() " Strip trailing whitespace (,ss)
 	let save_cursor = getpos(".")
 	let old_query = getreg('/')
 	:%s/\s\+$//e
 	call setpos('.', save_cursor)
 	call setreg('/', old_query)
 endfunction
-noremap <leader>ss :call StripWhitespace()<CR>
-" Save a file as root (,W)
-noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
-" Automatic commands
-if has("autocmd")
+noremap <leader>ss :call StripWhitespace()<CR>
+noremap <leader>W :w !sudo tee % > /dev/null<CR> " Save a file as root (,W)
+
+if has("autocmd") " Automatic commands
 	" Enable file type detection
 	filetype on
 	" Treat .json files as .js
@@ -174,13 +157,13 @@ if has("autocmd")
 endif
 
 " Syntastic confinguration
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 let g:syntastic_mode_map = { "mode": "active",
                            \ "active_filetypes": [],
                            \ "passive_filetypes": ["scala"] }
