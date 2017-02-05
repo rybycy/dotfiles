@@ -6,7 +6,9 @@
 export ZSH=~/.oh-my-zsh
 export TERM="xterm-256color"
 export SPARK_HOME=/usr/local/spark
-export PATH=$PATH:/usr/local/spark/bin
+export SCALA_HOME=/usr/share/scala
+export PATH=$PATH:$SCALA_HOME/bin:$SPARK_HOME/bin
+export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="agnoster"

@@ -82,6 +82,7 @@ Plugin 'terryma/vim-expand-region'
 Plugin 'tpope/vim-fugitive'     " git wrapper - provides :G_ commands
 Plugin 'airblade/vim-gitgutter' " git diff in sidebar
 Plugin 'alvan/vim-closetag'     " close xml/html tags
+Plugin 'vim-scripts/mru.vim'
 
 Plugin 'lervag/vimtex'          " LateX support
 
@@ -110,6 +111,7 @@ call vundle#end()			" required
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " Limelight
+autocmd VimEnter * Limelight
 map <Leader>tl :Limelight!!<CR>		" toggle limelight
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
@@ -120,6 +122,9 @@ let g:limelight_conceal_guifg = '#777777'
 map <C-n> :NERDTreeToggle<CR>		" ctrl + n opens nerdtree
 map <leader>sf :NERDTreeFind<CR>		" ctrl + f finds in nerdtree
 map <F2> :retab <CR> :wq! <CR>
+
+" MRU.vim
+map <leader>r :MRU<CR> " open most recent files
 
 " Ctrl + P
 let g:ctrlp_working_path_mode = 'c'	" search down the current dir
