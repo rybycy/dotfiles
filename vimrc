@@ -48,9 +48,7 @@ set listchars=tab:→\ ,trail:♣,extends:❯,precedes:❮ " show white characte
 " -------- Global key bindings
 
 nnoremap <Leader>tw :set list!<CR>              " toggle whitespaces highlighting
-nnoremap <Leader>lx :%!xmllint --format -       " lint xml
-nnoremap <Leader>sh :split<CR>                  " split horizontally
-nnoremap <Leader>sv :vsplit<CR>                 " split vertically
+nnoremap <Leader>lx :%!xmllint --format -
 
 map <C-t> :tabnew<CR>			" CTRL + t opens new tab
 map <C-`> :tabNext<CR>			" CTRL + ` goes to next tab
@@ -71,7 +69,7 @@ Plugin 'vimwiki/vimwiki'		    " vim wiki
 Plugin 'tpope/vim-surround'		    " parenthesizing - provides super useful keystroke of `ysiw[` which wraps current word in []
 Plugin 'kien/ctrlp.vim'			    " smart file finding with CTRL+P
 Plugin 'scrooloose/syntastic'		" syntax checking
-Plugin 'scrooloose/nerdcommenter'	" provides <leader>(cc|c<space>) for commenting
+Plugin 'tpope/vim-commentary'	    " provides gcc,
 Plugin 'scrooloose/nerdtree'		" file tree
 Plugin 'ervandew/supertab'	    	" insert mode completions with tab
 Plugin 'godlygeek/tabular'		    " text alignment
@@ -83,6 +81,7 @@ Plugin 'tpope/vim-fugitive'     " git wrapper - provides :G_ commands
 Plugin 'airblade/vim-gitgutter' " git diff in sidebar
 Plugin 'alvan/vim-closetag'     " close xml/html tags
 Plugin 'vim-scripts/mru.vim'
+Plugin 'tpope/vim-unimpaired'   " provision of quickfix hotkeys
 
 Plugin 'lervag/vimtex'          " LateX support
 
@@ -102,6 +101,7 @@ Plugin 'derekwyatt/vim-scala'
 
 Plugin 'elzr/vim-json'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()			" required
 
@@ -140,7 +140,7 @@ function Glastmsg()
 endfunction
 command! Glastmsg all Glastmsg()
 
-function! StripWhitespace() " Strip trailing whitespace (,ss)
+function! StripWhitespace()
 	let save_cursor = getpos(".")
 	let old_query = getreg('/')
 	:%s/\s\+$//e
@@ -148,7 +148,7 @@ function! StripWhitespace() " Strip trailing whitespace (,ss)
 	call setreg('/', old_query)
 endfunction
 
-noremap <leader>ss :call StripWhitespace()<CR>
+noremap <leader>sw :call StripWhitespace()<CR>
 noremap <leader>W :w !sudo tee % > /dev/null<CR> " Save a file as root (,W)
 
 if has("autocmd") " Automatic commands
