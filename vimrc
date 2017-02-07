@@ -55,6 +55,8 @@ map <C-`> :tabNext<CR>			" CTRL + ` goes to next tab
 
 filetype off				" required
 
+set lazyredraw
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -82,7 +84,7 @@ Plugin 'airblade/vim-gitgutter' " git diff in sidebar
 Plugin 'alvan/vim-closetag'     " close xml/html tags
 Plugin 'vim-scripts/mru.vim'
 Plugin 'tpope/vim-unimpaired'   " provision of quickfix hotkeys
-
+Plugin 'jiangmiao/auto-pairs'   " quotes/brackets auto pairing
 Plugin 'lervag/vimtex'          " LateX support
 
 " prog
@@ -90,6 +92,7 @@ Plugin 'lervag/vimtex'          " LateX support
 Plugin 'lepture/vim-jinja'
 Plugin 'othree/html5.vim'
 Plugin 'gregsexton/MatchTag'		" match tags in html
+Plugin 'JulesWang/css.vim'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'gavocanov/vim-js-indent'
@@ -98,6 +101,7 @@ Plugin 'mxw/vim-jsx'
 
 Plugin 'klen/python-mode'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'sheerun/vim-polyglot' " language pack
 
 Plugin 'elzr/vim-json'
 Plugin 'plasticboy/vim-markdown'
