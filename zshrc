@@ -73,6 +73,8 @@ function diveIntoJar {
 	done
 }
 
+alias skag=sk --ansi -i -c 'ag --color "{}"'
+
 function movToWebm {
     #brew install ffmpeg --with-libvpx
     src="$1"

@@ -164,7 +164,7 @@ set statusline+=%*
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
 " let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+" let g:syntastic_check_on_wq = 1
 let g:syntastic_mode_map = { "mode": "active",
                            \ "active_filetypes": [],
                            \ "passive_filetypes": ["scala"] }
@@ -177,6 +177,10 @@ set background=dark
 colorscheme solarized
 
 let g:closetag_filenames = "*.xml,*.xslt,*.html,*.xhtml,*.phtml"
+
+function! LintJson()
+    :%!python -m json.tool
+endfunction
 
 " Fat-fingers, halp, halp!
 :command WQ wq
