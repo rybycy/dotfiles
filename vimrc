@@ -90,21 +90,13 @@ Plugin 'lervag/vimtex'          " LateX support
 " prog
 " frontend
 Plugin 'lepture/vim-jinja'
-Plugin 'othree/html5.vim'
 Plugin 'gregsexton/MatchTag'		" match tags in html
-Plugin 'JulesWang/css.vim'
 
-Plugin 'pangloss/vim-javascript'
 Plugin 'gavocanov/vim-js-indent'
 Plugin 'othree/es.next.syntax.vim'
-Plugin 'mxw/vim-jsx'
 
-Plugin 'klen/python-mode'
-Plugin 'derekwyatt/vim-scala'
 Plugin 'sheerun/vim-polyglot' " language pack
 
-Plugin 'elzr/vim-json'
-Plugin 'plasticboy/vim-markdown'
 Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()			" required
