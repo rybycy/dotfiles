@@ -8,14 +8,15 @@ alias hyper ctrl;shift;alt;cmd
 ## Application aliases
 alias firefox   'Firefox'
 alias firefoxdev 'FirefoxDeveloperEdition'
-alias chrome	'Google Chrome'
+alias chrome    'Google Chrome'
 alias editor    'Atom'
-alias mail	'Mailbox (Beta)'
+alias mail  'Mailbox (Beta)'
 alias terminal  'iTerm2'
-alias slack	'Slack'
-alias code	'IntelliJ IDEA'
-alias file	'Finder'
-alias todos	'AnyDo'
+alias slack 'Slack'
+alias code  'IntelliJ IDEA'
+alias file  'Finder'
+alias todos 'AnyDo'
+alias vimgui 'MacVim'
 
 ## Position aliases
 alias full         move screenOriginX;screenOriginY                screenSizeX;screenSizeY
@@ -54,8 +55,10 @@ bind space:${hyper}  focus ${editor}
 bind f:${hyper}      focus ${firefox}
 bind q:${hyper}      focus ${firefoxdev}
 bind d:${hyper}      focus ${terminal}
-bind s:${hyper}	     focus ${slack}
-bind c:${hyper}	     focus ${code}
-bind m:${hyper}	     focus ${mail}
-bind t:${hyper}	     focus ${todos}
-bind e:${hyper}	     focus ${chrome}
+bind s:${hyper}      focus ${slack}
+bind c:${hyper}      focus ${code}
+bind m:${hyper}      focus ${mail}
+bind t:${hyper}      focus ${todos}
+bind e:${hyper}      focus ${chrome}
+bind v:${hyper}      focus ${vimgui}
+bind u:${hyper}      focus 'WebStorm'
