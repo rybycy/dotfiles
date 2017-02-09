@@ -8,7 +8,7 @@ export TERM="xterm-256color"
 export SPARK_HOME=/usr/local/spark
 export SCALA_HOME=/usr/share/scala
 export PATH=$PATH:$SCALA_HOME/bin:$SPARK_HOME/bin
-export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+export JAVA_HOME=$(readlink /usr/bin/java | sed "s:bin/java::")
 
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="agnoster"
@@ -51,7 +51,7 @@ function optimize_pdf {
 	sudo gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -sOutputFile=$2 "$1"
 }
 
-alias GIT_SORRY_I_AM_VERY_STUPID=$(git reset 'HEAD@{1}')
+alias GIT_SORRY_I_AM_VERY_STUPID="git reset 'HEAD@{1}'"
 
 # replace content of the current dir $1 with $2 in all files recursively
 function dangerouslyReplaceInAllFilesRecursively {
@@ -73,7 +73,8 @@ function diveIntoJar {
 	done
 }
 
-alias skag=sk --ansi -i -c 'ag --color "{}"'
+alias skag="sk --ansi -i -c 'ag --color \"{}\"'"
+alias skvim="vim -p \$(sk -m)"
 
 function movToWebm {
     #brew install ffmpeg --with-libvpx

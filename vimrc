@@ -7,7 +7,8 @@ endif
 
 " global settings
 syntax on
-let mapleader=' '
+map <Space> <Nop>
+let mapleader = "\<Space>"
 set nocompatible			" be iMproved, required
 set laststatus=2			" always show the status line
 set relativenumber			" show line number at the beginning of each line
@@ -178,10 +179,11 @@ colorscheme solarized
 
 let g:closetag_filenames = "*.xml,*.xslt,*.html,*.xhtml,*.phtml"
 
+let g:vimwiki_list = [{'path': '$HOME/Sync/wiki'}]
+
 function! LintJson()
     :%!python -m json.tool
 endfunction
-
 " Fat-fingers, halp, halp!
 :command WQ wq
 :command Wq wq
