@@ -184,6 +184,9 @@ let g:vimwiki_list = [{'path': '$HOME/Sync/wiki'}]
 function! LintJson()
     :%!python -m json.tool
 endfunction
+
+xnoremap . :normal .<CR> " repeat the last command for each block-selected line
+
 " Fat-fingers, halp, halp!
 :command WQ wq
 :command Wq wq
