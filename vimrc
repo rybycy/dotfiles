@@ -66,6 +66,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
 
 Plugin 'altercation/vim-colors-solarized' " colour scheme
+Plugin 'morhetz/gruvbox'
 
 Plugin 'maciakl/vim-neatstatus'		" beautiful status line
 Plugin 'vimwiki/vimwiki'		    " vim wiki
@@ -175,7 +176,7 @@ let g:javascript_plugin_jsdoc = 1 " configure javascript plugin
 set background=dark
 " :set t_Co=256
 " let g:solarized_termcolors=256
-colorscheme solarized
+colorscheme gruvbox
 
 let g:closetag_filenames = "*.xml,*.xslt,*.html,*.xhtml,*.phtml"
 
