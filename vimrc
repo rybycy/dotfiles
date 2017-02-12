@@ -139,10 +139,9 @@ set omnifunc=syntaxcomplete#Complete
 
 " ----------- Custom function
 
-function Glastmsg()
-	read !git lastmsg
-endfunction
-command! Glastmsg all Glastmsg()
+" insert the last commit message into the text.
+" useful for recalling the ticket number
+command! Glastmsg read !git log -1 --pretty=\%B
 
 function! StripWhitespace()
 	let save_cursor = getpos(".")
