@@ -98,7 +98,8 @@ Plugin 'gavocanov/vim-js-indent'
 Plugin 'othree/es.next.syntax.vim'
 
 Plugin 'sheerun/vim-polyglot' " language pack
-
+Plugin 'reedes/vim-wordy'      " find misused words
+Plugin 'ron89/thesaurus_query.vim' " synonyms
 Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()			" required
@@ -123,6 +124,11 @@ map <F2> :retab <CR> :wq! <CR>
 
 " MRU.vim
 map <leader>r :MRU<CR> " open most recent files
+
+" wordy
+let g:wordy#ring = [ ['weak', 'redundant', 'colloquial'] ]
+noremap <Leader>cd :NextWordy<CR>
+
 
 " Ctrl + P
 let g:ctrlp_working_path_mode = 'c'	" search down the current dir
