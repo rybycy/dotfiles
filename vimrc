@@ -1,11 +1,13 @@
-" initial setup
+" vim:fdm=marker
+
+" {{{ INITIAL SETUP
 if exists('*mkdir') && !isdirectory($HOME.'/.vim/files')
   call mkdir($HOME.'/.vim/files')
   call mkdir($HOME.'/.vim/files/swaps')
   call mkdir($HOME.'/.vim/files/backups')
 endif
-
-" global settings
+" }}}
+" {{{ GLOBAL SETTINGS
 syntax on
 map <Space> <Nop>
 let mapleader = "\<Space>"
@@ -46,18 +48,23 @@ highlight htmlArg cterm=italic
 set list
 set listchars=tab:→\ ,trail:♣,extends:❯,precedes:❮ " show white characters
 
-" -------- Global key bindings
+filetype off				" required
+
+set background=dark
+" :set t_Co=256
+" let g:solarized_termcolors=256
+
+set lazyredraw
+" }}}
+" {{{ GLOBAL KEY BINDINGS
 
 nnoremap <Leader>tw :set list!<CR>              " toggle whitespaces highlighting
 nnoremap <Leader>lx :%!xmllint --format -
 
 map <C-t> :tabnew<CR>			" CTRL + t opens new tab
 map <C-`> :tabNext<CR>			" CTRL + ` goes to next tab
-
-filetype off				" required
-
-set lazyredraw
-
+" }}}
+" {{{ PLUGINS
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -104,7 +111,8 @@ Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()			" required
 
-" ------------ Plugin configuration
+" }}}
+" {{{ PLUGIN CONFIGURATION
 " vim-ack
 " use ag instead of ack as a grepping tool
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -140,7 +148,27 @@ set omnifunc=syntaxcomplete#Complete
 " Region expand
 vmap v <Plug>(expand_region_expand)
 
-" ----------- Custom function
+let g:closetag_filenames = "*.xml,*.xslt,*.html,*.xhtml,*.phtml"
+
+let g:vimwiki_list = [{'path': '$HOME/Sync/wiki'}]
+
+
+" Syntastic confinguration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 1
+let g:syntastic_mode_map = { "mode": "active",
+                           \ "active_filetypes": [],
+                           \ "passive_filetypes": ["scala"] }
+
+let g:javascript_plugin_jsdoc = 1 " configure javascript plugin
+
+" }}}
+" {{{ CUSTOM FUNCTION
 
 " insert the last commit message into the text.
 " useful for recalling the ticket number
@@ -167,29 +195,6 @@ if has("autocmd") " Automatic commands
 	autocmd BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunj set filetype=jinja " use ninja highlighting on e.g. nunj templates
 endif
 
-" Syntastic confinguration
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 1
-let g:syntastic_mode_map = { "mode": "active",
-                           \ "active_filetypes": [],
-                           \ "passive_filetypes": ["scala"] }
-
-let g:javascript_plugin_jsdoc = 1 " configure javascript plugin
-
-set background=dark
-" :set t_Co=256
-" let g:solarized_termcolors=256
-colorscheme gruvbox
-
-let g:closetag_filenames = "*.xml,*.xslt,*.html,*.xhtml,*.phtml"
-
-let g:vimwiki_list = [{'path': '$HOME/Sync/wiki'}]
-
 function! LintJson()
     :%!python -m json.tool
 endfunction
@@ -204,3 +209,5 @@ xnoremap . :normal .<CR> " repeat the last command for each block-selected line
 :command Q q
 :command QA qa
 :command Qa qa
+" }}}
+colorscheme gruvbox

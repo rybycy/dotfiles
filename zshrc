@@ -13,6 +13,8 @@ export JAVA_HOME=$(readlink /usr/bin/java | sed "s:bin/java::")
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="agnoster"
 
+DEFAULT_USER='rybycy'
+
 # matches case insensitive for lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 

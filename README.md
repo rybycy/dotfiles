@@ -15,6 +15,9 @@ http://thoughtbot.github.io/rcm/lsrc.1.html
 2. sudo apt-get install vim-nox for ruby support
 3. mkdir .vim/backups && mkdir .vim/swaps
 
+# iTerm
+Theme: Belafonte night
+
 
 ## Keystrokes
 ### Vanilla VIM
