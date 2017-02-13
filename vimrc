@@ -137,6 +137,9 @@ filetype plugin indent on
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
+" Region expand
+vmap v <Plug>(expand_region_expand)
+
 " ----------- Custom function
 
 " insert the last commit message into the text.
