@@ -160,11 +160,20 @@
 	# Automatically correct and execute mistyped commands
 	autocorrect = 1
 
+[difftool]
+  prompt = false
+[difftool "meld"]
+  trustExitCode = true
+  cmd = open -W -a Meld --args \"$LOCAL\" \"$PWD/$REMOTE\"
 [merge]
-
-	# Include summaries of merged commits in newly created merge commit messages
-	log = true
-
+	tool = p4merge
+[mergetool]
+  prompt = false
+[mergetool "p4merge"]
+  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "\"$PWD/$BASE\"" "\"$PWD/$LOCAL\""  "\"$PWD/$REMOTE\"" "\"$PWD/$MERGED\""
+  keepTemporaries = false
+  trustExitCode = false
+  keepBackup = false
 # URL shorthands
 
 [url "git@github.com:"]
@@ -187,3 +196,5 @@
 
 	insteadOf = "gist:"
 	pr = pull --rebase
+[diff]
+	tool = meld

@@ -54,6 +54,7 @@ function optimize_pdf {
 }
 
 alias GIT_SORRY_I_AM_VERY_STUPID="git reset 'HEAD@{1}'"
+alias AWS_KICK_PUPPET="ssh h226636@10.66.32.21 'sudo puppet agent -t' && ssh h226636@10.66.12.100 'sudo puppet agent -t'"
 
 # replace content of the current dir $1 with $2 in all files recursively
 function dangerouslyReplaceInAllFilesRecursively {
@@ -97,5 +98,20 @@ else
     alias ccommand="echo !! | xcopy" # todo
 fi
 . $HOME/.zsh/plugins/bd/bd.zsh
+
+[[ -s "$HOME/.qfc/bin/qfc.sh"  ]] && source "$HOME/.qfc/bin/qfc.sh"
+
 source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 DISABLE_AUTO_TITLE=true
+
+function findTotalSize {
+    find $@ -exec du -ch {} + | grep total$
+}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias bit_lscs_proxy='ssh -L 1876:localhost:1876 h226636@10.66.12.65'
+
+alias st="open -a \"Sublime Text\""
+export PATH="/usr/local/opt/expat/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

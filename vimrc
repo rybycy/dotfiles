@@ -1,4 +1,6 @@
 " vim:fdm=marker
+au FileType xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
+
 
 " {{{ INITIAL SETUP
 if exists('*mkdir') && !isdirectory($HOME.'/.vim/files')
